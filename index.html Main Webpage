@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Valuation Tool</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Property Valuation Tool</h1>
+        <label for="location">Location:</label>
+        <input type="text" id="location" placeholder="Enter property location">
+
+        <label for="size">Size (sq ft):</label>
+        <input type="number" id="size" placeholder="Enter property size">
+
+        <label for="amenities">Amenities:</label>
+        <input type="text" id="amenities" placeholder="Enter amenities (comma-separated)">
+
+        <button onclick="calculatePropertyValue()">Calculate Value</button>
+        
+        <h2>Estimated Value:</h2>
+        <p id="result"></p>
+    </div>
+
+    <script src="script.js"></script>
+</
