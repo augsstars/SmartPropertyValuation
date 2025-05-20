@@ -5,8 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Property Valuation Tool</title>
     <link rel="stylesheet" href="style.css">
-</head>
+</head
 <body>
+    <h1>Welcome to Smart Property Valuation</h1>
+    <p>Enter your details to begin:</p>
+
+    <form id="valuationForm">
+        <label for="propertyType">Property Type:</label>
+        <input type="text" id="propertyType" name="propertyType" required>
+        
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" required>
+        
+        <button type="submit">Begin Valuation</button>
+    </form>
+</body>
+
     <div class="container">
         <h1>Property Valuation Tool</h1>
         <label for="location">Location:</label>
