@@ -1,6 +1,13 @@
-// Show the form when "Start" is clicked
-document.getElementById("startButton").addEventListener("click", function() {
-    document.getElementById("formContainer").style.display = "block";
+// Ensure script runs only if button exists
+document.addEventListener("DOMContentLoaded", function () {
+    let startButton = document.getElementById("startButton");
+    let formContainer = document.getElementById("formContainer");
+
+    if (startButton && formContainer) {
+        startButton.addEventListener("click", function() {
+            formContainer.style.display = "block";
+        });
+    }
 });
 
 // Capture user input for house search
