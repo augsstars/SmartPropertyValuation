@@ -3,13 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Property Valuation Tool</title>
-    <link rel="stylesheet" href="style.css">
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Property Valuation</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -36,9 +29,10 @@
         <button onclick="searchHouses()">Search for Homes</button>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js"></script> <!-- ✅ Ensuring script is correctly linked -->
 </body>
 </html>
+
 
         
      
