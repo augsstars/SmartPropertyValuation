@@ -1,0 +1,16 @@
+document.addEventListener("DOMContentLoaded", function () {
+    let startButton = document.getElementById("startButton");
+    let formContainer = document.getElementById("formContainer");
+
+    if (startButton && formContainer) {
+        startButton.addEventListener("click", function() {
+            formContainer.style.opacity = "0";
+            formContainer.style.display = "block";
+
+            setTimeout(() => {
+                formContainer.style.opacity = "1";
+                formContainer.style.transition = "opacity 0.5s ease-in";
+            }, 100);
+        });
+    }
+});
