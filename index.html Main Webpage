@@ -5,38 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Property Valuation Tool</title>
     <link rel="stylesheet" href="style.css">
-</head
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Property Valuation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
     <h1>Welcome to Smart Property Valuation</h1>
-    <p>Enter your details to begin:</p>
+    <p>Click "Start" to enter your preferences!</p>
+    
+    <button id="startButton">Start</button>
 
-    <form id="valuationForm">
-        <label for="propertyType">Property Type:</label>
-        <input type="text" id="propertyType" name="propertyType" required>
+    <div id="formContainer" style="display: none;">
+        <h2>Enter Your Preferences</h2>
+        <label for="style">House Style:</label>
+        <input type="text" id="style" placeholder="Enter house style">
         
-        <label for="location">Location:</label>
-        <input type="text" id="location" name="location" required>
+        <label for="bedrooms">Bedrooms:</label>
+        <input type="number" id="bedrooms" placeholder="Enter number of bedrooms">
         
-        <button type="submit">Begin Valuation</button>
-    </form>
-</body>
-
-    <div class="container">
-        <h1>Property Valuation Tool</h1>
-        <label for="location">Location:</label>
-        <input type="text" id="location" placeholder="Enter property location">
-
-        <label for="size">Size (sq ft):</label>
-        <input type="number" id="size" placeholder="Enter property size">
-
-        <label for="amenities">Amenities:</label>
-        <input type="text" id="amenities" placeholder="Enter amenities (comma-separated)">
-
-        <button onclick="calculatePropertyValue()">Calculate Value</button>
+        <label for="bathrooms">Bathrooms:</label>
+        <input type="number" id="bathrooms" placeholder="Enter number of bathrooms">
         
-        <h2>Estimated Value:</h2>
-        <p id="result"></p>
+        <label for="preferences">Other Preferences:</label>
+        <input type="text" id="preferences" placeholder="Enter any special requirements">
+        
+        <button onclick="searchHouses()">Search for Homes</button>
     </div>
 
     <script src="script.js"></script>
-</
+</body>
+</html>
+
+        
+     
