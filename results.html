@@ -2,92 +2,60 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>SmartPropertyValuation</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Results - SmartPropertyValuation</title>
   <style>
-    body { font-family: Arial, sans-serif; background: #f5f5f5; }
-    .container { max-width: 500px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);}
-    label { display: block; margin: 15px 0 5px; font-weight: bold; }
-    input, select { width: 100%; padding: 10px; border: 1px solid #bbb; border-radius: 5px; }
-    button { margin-top: 20px; padding: 12px 30px; background: #007BFF; color: #fff; border: none; border-radius: 6px; font-size: 18px; cursor: pointer; }
-    button:disabled { background: #aaa; }
-    .results { margin-top: 40px; }
+    body { font-family: Arial; background: #f5f5f5; }
+    .container { max-width: 600px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);}
+    h2 { color: #007BFF; }
     .source { margin: 20px 0; padding: 15px; background: #f0f7ff; border-radius: 5px; border: 1px solid #c5e0ff; }
-    .source h3 { margin: 0 0 10px 0; }
+    .source h3 { margin-top: 0; }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Home Value Aggregator</h1>
-    <form id="propertyForm">
-      <label for="address">Address</label>
-      <input type="text" id="address" required placeholder="123 Main St, City, State">
-
-      <label for="zipcode">Zip Code</label>
-      <input type="text" id="zipcode" required placeholder="90210">
-
-      <label for="bedrooms">Bedrooms</label>
-      <input type="number" id="bedrooms" min="1" max="10" required>
-
-      <label for="bathrooms">Bathrooms</label>
-      <input type="number" id="bathrooms" min="1" max="10" required>
-
-      <label for="sqft">Square Footage</label>
-      <input type="number" id="sqft" min="100" max="10000" required>
-
-      <label for="preferences">Preferences</label>
-      <select id="preferences">
-        <option value="">--Select--</option>
-        <option value="sell">Looking to Sell</option>
-        <option value="buy">Looking to Buy</option>
-        <option value="refinance">Refinance</option>
-      </select>
-
-      <button type="submit">Get Valuations</button>
-    </form>
-    <div class="results" id="results"></div>
+    <h2>Your Property Valuation Results</h2>
+    <div id="userData"></div>
+    <div id="results"></div>
+    <a href="form.html">Back to Form</a>
   </div>
   <script>
-    document.getElementById('propertyForm').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      document.querySelector('button[type="submit"]').disabled = true;
-      document.getElementById('results').innerHTML = 'Fetching valuations...';
+    // Retrieve and show user data
+    const data = JSON.parse(localStorage.getItem('propertyData'));
+    if (data) {
+      document.getElementById('userData').innerHTML = `
+        <h3>Property Information:</h3>
+        <ul>
+          <li><b>Address:</b> ${data.address}</li>
+          <li><b>Zip Code:</b> ${data.zipcode}</li>
+          <li><b>Bedrooms:</b> ${data.bedrooms}</li>
+          <li><b>Bathrooms:</b> ${data.bathrooms}</li>
+          <li><b>Square Footage:</b> ${data.sqft}</li>
+          <li><b>Preferences:</b> ${data.preferences}</li>
+        </ul>
+      `;
+    }
 
-      // Gather form data
-      const data = {
-        address: document.getElementById('address').value,
-        zipcode: document.getElementById('zipcode').value,
-        bedrooms: document.getElementById('bedrooms').value,
-        bathrooms: document.getElementById('bathrooms').value,
-        sqft: document.getElementById('sqft').value,
-        preferences: document.getElementById('preferences').value
-      };
-
-      // Call your backend API
-      try {
-        const response = await fetch('/api/aggregate-valuations', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-        const result = await response.json();
-
-        // Example result: { zillow: {...}, trulia: {...}, realtor: {...} }
-        let html = '';
-        for (const [source, info] of Object.entries(result)) {
-          html += `<div class="source">
-            <h3>${source.charAt(0).toUpperCase() + source.slice(1)}</h3>
-            <p><strong>Estimate:</strong> $${info.value ? info.value.toLocaleString() : 'N/A'}</p>
-            ${info.link ? `<p><a href="${info.link}" target="_blank">View on ${source.charAt(0).toUpperCase() + source.slice(1)}</a></p>` : ''}
-            ${info.notes ? `<p>${info.notes}</p>` : ''}
-          </div>`;
-        }
-        document.getElementById('results').innerHTML = html;
-      } catch (err) {
-        document.getElementById('results').innerHTML = 'Error fetching valuations. Try again later.';
-      }
-      document.querySelector('button[type="submit"]').disabled = false;
-    });
+    // For demo: show mock results
+    document.getElementById('results').innerHTML = `
+      <div class="source">
+        <h3>Zillow</h3>
+        <p><strong>Estimate:</strong> $510,000</p>
+        <a href="https://www.zillow.com/" target="_blank">See on Zillow</a>
+      </div>
+      <div class="source">
+        <h3>Realtor.com</h3>
+        <p><strong>Estimate:</strong> $515,000</p>
+        <a href="https://www.realtor.com/" target="_blank">See on Realtor.com</a>
+      </div>
+      <div class="source">
+        <h3>Trulia</h3>
+        <p><strong>Estimate:</strong> $508,000</p>
+        <a href="https://www.trulia.com/" target="_blank">See on Trulia</a>
+      </div>
+      <p style="font-size:0.9em;color:#888;">(These are demo values. For real results, connect to APIs.)</p>
+    `;
   </script>
 </body>
 </html>
+   
+    
