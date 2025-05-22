@@ -1,0 +1,31 @@
+# Compiled Java classes  
+*.class  
+
+# IDE and editor config files  
+/.idea/  
+/.vscode/  
+
+# Maven & Gradle build directories  
+target/  
+.gradle/  
+build/  
+
+# Java dependency directories  
+lib/  
+bin/  
+
+# JAR & WAR files  
+*.jar  
+*.war  
+
+# Logs & temporary files  
+logs/  
+*.log  
+hs_err_pid*  
+
+# Java debugging & profiling  
+*.hprof  
+replay_pid*  
+
+# Java cache files  
+.metadata
