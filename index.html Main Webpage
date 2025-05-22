@@ -1,32 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Property Valuation</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>SmartPropertyValuation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    .start-btn {
+      display: inline-block;
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      background-color: #007BFF;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, opacity 0.7s ease, transform 0.7s ease;
+      text-decoration: none;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .start-btn:hover {
+      background-color: #0056b3;
+    }
+    .start-btn.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 <body>
-    <h1>Welcome to Smart Property Valuation</h1>
-    <p>Click "Start" to enter your preferences!</p>
+  <h1>SmartPropertyValuation</h1>
+  <p>Helps users estimate their home's worth based on location, size, and amenities.</p>
+  <p>Get instant valuations and expert tips to improve property value—perfect for buyers, sellers, and homeowners.</p>
+  <a href="form.html" class="start-btn">Start Now</a>
+  <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      document.querySelector('.start-btn').classList.add('visible');
+    });
+  </script>
+</body>
+</html>
 
-    <!-- ✅ Start Button with working functionality -->
-    <button id="startButton">Start</button>
-
-    <div id="formContainer" style="display: none;">
-        <h2>Enter Your Preferences</h2>
-        <label for="style">House Style:</label>
-        <input type="text" id="style" placeholder="Enter house style">
-
-        <label for="bedrooms">Bedrooms:</label>
-        <input type="number" id="bedrooms" placeholder="Enter number of bedrooms">
-
-        <label for="bathrooms">Bathrooms:</label>
-        <input type="number" id="bathrooms" placeholder="Enter number of bathrooms">
-
-        <label for="preferences">Other Preferences:</label>
-        <input type="text" id="preferences" placeholder="Enter
-
-
-        
-     
+       
