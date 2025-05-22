@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Property Info - SmartPropertyValuation</title>
+  <title>Find Your Dream Home - SmartPropertyValuation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body { font-family: Arial; background: #f5f5f5; }
@@ -15,20 +15,54 @@
 </head>
 <body>
   <div class="container">
-    <h2>Enter Your Property Information</h2>
-    <form id="propertyForm">
-      <label for="address">Address</label>
-      <input type="text" id="address" required placeholder="123 Main St, City, State">
-      <label for="zipcode">Zip Code</label>
-      <input type="text" id="zipcode" required placeholder="90210">
-      <label for="bedrooms">Bedrooms</label>
+    <h2>Tell Us About Your Ideal Home</h2>
+    <form id="buyerForm">
+      <label for="location">Preferred Location or Area</label>
+      <input type="text" id="location" required placeholder="e.g., Downtown, Suburbs, Zip Code">
+
+      <label for="budget">Your Budget ($)</label>
+      <input type="number" id="budget" required placeholder="e.g., 500000">
+
+      <label for="bedrooms">Minimum Bedrooms</label>
       <input type="number" id="bedrooms" min="1" max="10" required>
-      <label for="bathrooms">Bathrooms</label>
+
+      <label for="bathrooms">Minimum Bathrooms</label>
       <input type="number" id="bathrooms" min="1" max="10" required>
-      <label for="sqft">Square Footage</label>
-      <input type="number" id="sqft" min="100" max="10000" required>
-      <label for="preferences">Preferences</label>
-      <select id="preferences" required>
+
+      <label for="type">Property Type</label>
+      <select id="type" required>
         <option value="">--Select--</option>
-        <option value="sell">Looking to Sell</option>
-        <
+        <option value="house">House</option>
+        <option value="condo">Condo</option>
+        <option value="apartment">Apartment</option>
+        <option value="townhouse">Townhouse</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label for="features">Must-Have Features (optional)</label>
+      <input type="text" id="features" placeholder="e.g., Garage, Pool, Large Yard">
+
+      <button type="submit">Search Homes</button>
+    </form>
+  </div>
+  <script>
+    document.getElementById('buyerForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Gather form data
+      const data = {
+        location: document.getElementById('location').value,
+        budget: document.getElementById('budget').value,
+        bedrooms: document.getElementById('bedrooms').value,
+        bathrooms: document.getElementById('bathrooms').value,
+        type: document.getElementById('type').value,
+        features: document.getElementById('features').value
+      };
+      // Store data in localStorage for retrieval on results.html
+      localStorage.setItem('buyerData', JSON.stringify(data));
+      // Go to results page
+      window.location.href = 'results.html';
+    });
+  </script>
+</body>
+</html>
+ 
