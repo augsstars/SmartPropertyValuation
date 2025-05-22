@@ -2,58 +2,64 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Your Results - SmartPropertyValuation</title>
+  <title>Your Home Search Results - SmartPropertyValuation</title>
   <style>
     body { font-family: Arial; background: #f5f5f5; }
     .container { max-width: 600px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);}
     h2 { color: #007BFF; }
-    .source { margin: 20px 0; padding: 15px; background: #f0f7ff; border-radius: 5px; border: 1px solid #c5e0ff; }
-    .source h3 { margin-top: 0; }
+    .criteria, .result { margin: 20px 0; padding: 15px; background: #f0f7ff; border-radius: 5px; border: 1px solid #c5e0ff; }
+    .criteria h3, .result h3 { margin-top: 0; }
+    .back-btn { display: inline-block; margin-top: 20px; padding: 10px 22px; font-size: 16px; background: #007BFF; color: #fff; border: none; border-radius: 6px; text-decoration: none; }
+    .back-btn:hover { background: #0056b3; }
+    .note { font-size: 0.95em; color: #888; }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>Your Property Valuation Results</h2>
-    <div id="userData"></div>
+    <h2>Your Home Search Preferences</h2>
+    <div class="criteria" id="buyerCriteria"></div>
     <div id="results"></div>
-    <a href="form.html">Back to Form</a>
+    <a href="form.html" class="back-btn">Back to Search</a>
   </div>
   <script>
-    // Retrieve and show user data
-    const data = JSON.parse(localStorage.getItem('propertyData'));
+    // Get buyer data from localStorage
+    const data = JSON.parse(localStorage.getItem('buyerData'));
     if (data) {
-      document.getElementById('userData').innerHTML = `
-        <h3>Property Information:</h3>
+      document.getElementById('buyerCriteria').innerHTML = `
+        <h3>What You're Looking For:</h3>
         <ul>
-          <li><b>Address:</b> ${data.address}</li>
-          <li><b>Zip Code:</b> ${data.zipcode}</li>
-          <li><b>Bedrooms:</b> ${data.bedrooms}</li>
-          <li><b>Bathrooms:</b> ${data.bathrooms}</li>
-          <li><b>Square Footage:</b> ${data.sqft}</li>
-          <li><b>Preferences:</b> ${data.preferences}</li>
+          <li><b>Preferred Location:</b> ${data.location}</li>
+          <li><b>Budget:</b> $${Number(data.budget).toLocaleString()}</li>
+          <li><b>Minimum Bedrooms:</b> ${data.bedrooms}</li>
+          <li><b>Minimum Bathrooms:</b> ${data.bathrooms}</li>
+          <li><b>Property Type:</b> ${data.type}</li>
+          <li><b>Must-Have Features:</b> ${data.features ? data.features : 'None specified'}</li>
         </ul>
       `;
     }
 
-    // For demo: show mock results
+    // Demo: show mock results (you can later update this to use real listings)
     document.getElementById('results').innerHTML = `
-      <div class="source">
-        <h3>Zillow</h3>
-        <p><strong>Estimate:</strong> $510,000</p>
-        <a href="https://www.zillow.com/" target="_blank">See on Zillow</a>
+      <div class="result">
+        <h3>123 Dream St, ${data && data.location ? data.location : 'Sample City'}</h3>
+        <p><b>Price:</b> $${data && data.budget ? Number(data.budget).toLocaleString() : '525,000'}</p>
+        <p><b>Bedrooms:</b> ${data && data.bedrooms ? data.bedrooms : '3'} &nbsp; <b>Bathrooms:</b> ${data && data.bathrooms ? data.bathrooms : '2'}</p>
+        <p><b>Type:</b> ${data && data.type ? data.type : 'House'}</p>
+        <p><b>Features:</b> Garage, Large Yard</p>
+        <a href="https://www.zillow.com/" target="_blank">View Listing</a>
       </div>
-      <div class="source">
-        <h3>Realtor.com</h3>
-        <p><strong>Estimate:</strong> $515,000</p>
-        <a href="https://www.realtor.com/" target="_blank">See on Realtor.com</a>
+      <div class="result">
+        <h3>456 Cozy Ave, ${data && data.location ? data.location : 'Sample City'}</h3>
+        <p><b>Price:</b> $${data && data.budget ? (Number(data.budget) - 25000).toLocaleString() : '500,000'}</p>
+        <p><b>Bedrooms:</b> ${data && data.bedrooms ? data.bedrooms : '3'} &nbsp; <b>Bathrooms:</b> ${data && data.bathrooms ? data.bathrooms : '2'}</p>
+        <p><b>Type:</b> ${data && data.type ? data.type : 'Condo'}</p>
+        <p><b>Features:</b> Pool, Balcony</p>
+        <a href="https://www.realtor.com/" target="_blank">View Listing</a>
       </div>
-      <div class="source">
-        <h3>Trulia</h3>
-        <p><strong>Estimate:</strong> $508,000</p>
-        <a href="https://www.trulia.com/" target="_blank">See on Trulia</a>
-      </div>
-      <p style="font-size:0.9em;color:#888;">(These are demo values. For real results, connect to APIs.)</p>
+      <p class="note">(These are demo results. For real homes, connect to MLS or real estate APIs.)</p>
     `;
   </script>
 </body>
 </html>
+
+     
