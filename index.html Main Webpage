@@ -35,7 +35,7 @@
   <h1>SmartPropertyValuation</h1>
   <p>Helps users estimate their home's worth based on location, size, and amenities.</p>
   <p>Get instant valuations and expert tips to improve property value—perfect for buyers, sellers, and homeowners.</p>
-  <a href="#" class="start-btn" id="startBtn" title="Start your property valuation now!">Start Now</a>
+  <a href="form.html" class="start-btn" id="startBtn" title="Start your property valuation now!">Start Now</a>
   <div id="loadingSpinner">Loading...</div>
   <script>
     window.addEventListener('DOMContentLoaded', function() {
@@ -51,5 +51,4 @@
   </script>
 </body>
 </html>
-
-       
+    
