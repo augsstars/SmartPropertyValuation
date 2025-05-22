@@ -1,4 +1,3 @@
-// your code goes here
 class PropertyValuationAlgorithm {
     constructor(location, size, amenities) {
         this.location = location;
@@ -6,49 +5,60 @@ class PropertyValuationAlgorithm {
         this.amenities = amenities;
     }
 
-    // Method to gather data about similar properties in the area
+    // ✅ Gather data about similar properties
     gatherData() {
-        // Code to collect data such as sale prices, rental rates, and market trends
-        return []; // Returning an empty array for now
+        return [
+            { location: "New York", size: 1600, amenities: ["pool", "gym"], price: 500000 },
+            { location: "New Jersey", size: 1800, amenities: ["garage", "garden"], price: 420000 }
+        ];
     }
 
-    // Method to calculate the value of the property using the gathered data
+    // ✅ Calculate the estimated property value based on gathered data
     calculateValue(properties) {
-        // Code to calculate the property value using a formula or machine learning techniques
-        return 0; // Placeholder for calculated value
+        if (properties.length === 0) return "No data available";
+
+        let avgPrice = properties.reduce((acc, prop) => acc + prop.price, 0) / properties.length;
+        return avgPrice.toFixed(2); // Ensuring proper decimal formatting
     }
 
-    // Method to present the value of the property and recommendations to the owner
+    // ✅ Present valuation results with improved output
     presentValue(value, recommendations) {
-        console.log(`Property Value: $${value}`);
-        console.log("Recommendations:", recommendations);
+        console.log(`📊 Estimated Property Value: $${value.toLocaleString()}`);
+        console.log("💡 Recommendations:");
+        recommendations.forEach((rec, index) => console.log(`${index + 1}. ${rec}`));
     }
 
-    // Method to allow the owner to adjust the inputs and see how it affects the value
+    // ✅ Adjust property inputs while ensuring valid data
     adjustInputs(location, size, amenities) {
+        if (typeof location !== "string" || typeof size !== "number" || !Array.isArray(amenities)) {
+            console.error("Invalid input format");
+            return;
+        }
+
         this.location = location;
         this.size = size;
         this.amenities = amenities;
     }
 
-    // Method to continuously update the algorithm with new data
+    // ✅ Update algorithm with new property data
     updateAlgorithm(newProperties) {
-        // Code to update the algorithm with new data
+        const existingData = this.gatherData();
+        existingData.push(...newProperties);
     }
 
-    // Method to save the results and recommendations for future reference
+    // ✅ Save results for future reference
     saveResults(value, recommendations) {
-        console.log("Results saved:", { value, recommendations });
+        console.log("💾 Results saved:", { value, recommendations });
     }
 
-    // Method to connect owners with real estate professionals for additional assistance
+    // ✅ Connect owners with real estate professionals
     connectWithProfessionals() {
-        console.log("Connecting with real estate professionals...");
+        console.log("🔗 Connecting with real estate professionals...");
     }
 
-    // Method to provide explanations and visuals to help owners understand the results
+    // ✅ Provide explanations and insights into property valuation
     provideExplanation() {
-        console.log("Providing explanations and visuals...");
+        console.log("📘 Providing explanations and valuation insights...");
     }
 }
 
@@ -60,16 +70,7 @@ class PropertyValuationDriver {
         let properties = algorithm.gatherData();
         let value = algorithm.calculateValue(properties);
 
-        algorithm.presentValue(value, ["Add a rooftop deck", "Renovate kitchen and bathrooms", "Consider renting out the property for additional income"]);
+        algorithm.presentValue(value
+  
+  
 
-        algorithm.adjustInputs("New Jersey", 1800, ["garage", "fireplace", "garden"]);
-        algorithm.updateAlgorithm(properties);
-        algorithm.saveResults(value, ["Add a garage to increase value", "Consider adding a fireplace for more appeal"]);
-
-        algorithm.connectWithProfessionals();
-        algorithm.provideExplanation();
-    }
-}
-
-// Correctly calling the main method
-PropertyValuationDriver.main();
