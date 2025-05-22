@@ -5,11 +5,7 @@
   <title>SmartPropertyValuation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
-    }
+    body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
     .start-btn {
       display: inline-block;
       padding: 15px 30px;
@@ -25,12 +21,13 @@
       opacity: 0;
       transform: translateY(20px);
     }
-    .start-btn:hover {
-      background-color: #0056b3;
-    }
-    .start-btn.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .start-btn:hover { background-color: #0056b3; }
+    .start-btn.visible { opacity: 1; transform: translateY(0); }
+    #loadingSpinner {
+      display: none;
+      margin-top: 20px;
+      font-size: 18px;
+      color: #007BFF;
     }
   </style>
 </head>
@@ -38,10 +35,18 @@
   <h1>SmartPropertyValuation</h1>
   <p>Helps users estimate their home's worth based on location, size, and amenities.</p>
   <p>Get instant valuations and expert tips to improve property value—perfect for buyers, sellers, and homeowners.</p>
-  <a href="form.html" class="start-btn">Start Now</a>
+  <a href="#" class="start-btn" id="startBtn" title="Start your property valuation now!">Start Now</a>
+  <div id="loadingSpinner">Loading...</div>
   <script>
     window.addEventListener('DOMContentLoaded', function() {
       document.querySelector('.start-btn').classList.add('visible');
+    });
+    document.getElementById('startBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('loadingSpinner').style.display = 'block';
+      setTimeout(function() {
+        window.location.href = 'form.html';
+      }, 1000);
     });
   </script>
 </body>
