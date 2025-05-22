@@ -34,7 +34,7 @@
     <p>Helps users estimate their home's worth based on location, size, and amenities.</p>
     <p>Get instant valuations and expert tips to improve property value—perfect for buyers, sellers, and homeowners.</p>
 
-    <a href="form.html" class="start-btn">Start Now</a>
+   class="start-btn">Start Now</a>
 
 </body>
 </html>
