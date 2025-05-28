@@ -7,4 +7,5 @@ Get instant valuations and expert tips to improve property value—perfect for b
 <a href="https://github.com/augsstars/SmartPropertyValuation" target="_blank">
   <img src="https://img.shields.io/badge/Start%20App-Click%20Here-brightgreen?style=for-the-badge" alt="Start App" style="margin-top: 16px;"/>
 </a>
-     
+
+👉 **To begin, [click here to enter your property details and get your instant valuation!](form.html)**
